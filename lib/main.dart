@@ -1,31 +1,27 @@
 import 'package:auth_wall/AuthWallAppTheme.dart';
-import 'package:auth_wall/home/HomePage.dart';
+import 'package:auth_wall/navigation/Navigation.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
-import 'AuthWallAppBottomNavBar.dart';
-import 'login/LoginPage.dart';
-
 void main() {
-  runApp(const AuthWallApp());
+  runApp(AuthWallApp());
 }
 
 class AuthWallApp extends StatelessWidget {
-  const AuthWallApp({Key? key}) : super(key: key);
+  final AppRouter _appRouter = AppRouter();
+
+  AuthWallApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => PlatformApp(
-        title: "Authwall example",
-        home: PlatformScaffold(
-          body: LoginPage(),
-          bottomNavBar: AuthWallAppBottomBar(
-              context: context,
-              selectedItemPosition: 0,
-              onItemSelected: (position) => {})
+  Widget build(BuildContext context) => PlatformApp.router(
+        title: "Authwall example app",
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        material: (_, __) => MaterialAppRouterData(
+            theme: AuthWallAppTheme().getMaterialThemeData()
         ),
-        material: (_, __) =>
-            MaterialAppData(theme: AuthWallAppTheme().getMaterialThemeData()),
-        cupertino: (_, __) =>
-            CupertinoAppData(theme: AuthWallAppTheme().getCupertinoThemeData()),
+        cupertino: (_, __) => CupertinoAppRouterData(
+            theme: AuthWallAppTheme().getCupertinoThemeData()
+        ),
       );
 }
