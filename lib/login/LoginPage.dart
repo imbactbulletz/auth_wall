@@ -7,33 +7,34 @@ class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => MaxSizedBox(
-          child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            PlatformTextField(
-              hintText: "Username",
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.next,
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            PlatformTextField(
-              hintText: "Password",
-              keyboardType: TextInputType.text,
-              obscureText: true,
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            PlatformElevatedButton(
-              child: const Text("Login"),
-            )
-          ],
+  Widget build(BuildContext context) => PlatformScaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              PlatformTextField(
+                hintText: "Username",
+                keyboardType: TextInputType.text,
+                textInputAction: TextInputAction.next,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              PlatformTextField(
+                hintText: "Password",
+                keyboardType: TextInputType.text,
+                obscureText: true,
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              PlatformElevatedButton(
+                child: const Text("Login"),
+              )
+            ],
+          ),
         ),
-      ));
+      );
 }
