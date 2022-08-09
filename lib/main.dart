@@ -3,6 +3,7 @@ import 'package:auth_wall/home/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
+import 'AuthWallAppBottomNavBar.dart';
 import 'login/LoginPage.dart';
 
 void main() {
@@ -17,6 +18,10 @@ class AuthWallApp extends StatelessWidget {
         title: "Authwall example",
         home: PlatformScaffold(
           body: LoginPage(),
+          bottomNavBar: AuthWallAppBottomBar(
+              context: context,
+              selectedItemPosition: 0,
+              onItemSelected: (position) => {})
         ),
         material: (_, __) =>
             MaterialAppData(theme: AuthWallAppTheme().getMaterialThemeData()),
