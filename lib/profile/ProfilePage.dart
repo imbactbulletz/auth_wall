@@ -22,7 +22,13 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   PlatformElevatedButton(
                     child: const Text("Log in"),
-                    onPressed: () => AutoRouter.of(context).push(const LoginRoute()),
+                    onPressed: () {
+                      context.router.push(
+                          LoginRoute(
+                              destinationPath: const ProfileRoute().fullPath
+                          )
+                      );
+                    },
                   ),
                   PlatformElevatedButton(
                     child: const Text("Register"),
@@ -37,20 +43,16 @@ class ProfilePage extends StatelessWidget {
       ));
 
   void showFeatureNotImplementedDialog(BuildContext context) =>
-    showPlatformDialog(
-        context: context,
-        builder: (_) =>
-            PlatformAlertDialog(
-              title: const Text("Not implemented"),
-              content: const Text("This feature is not implemented yet"),
-              actions: [
-                PlatformDialogAction(
-                  child: const Text("Alright"),
-                  onPressed: () => {
-                    AutoRouter.of(context).pop()
-                  },
-                )
-              ],
-            )
-    );
+      showPlatformDialog(
+          context: context,
+          builder: (_) => PlatformAlertDialog(
+                title: const Text("Not implemented"),
+                content: const Text("This feature is not implemented yet"),
+                actions: [
+                  PlatformDialogAction(
+                    child: const Text("Alright"),
+                    onPressed: () => {AutoRouter.of(context).pop()},
+                  )
+                ],
+              ));
 }
