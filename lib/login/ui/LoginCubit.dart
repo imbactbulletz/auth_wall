@@ -1,11 +1,11 @@
-import 'package:auth_wall/login/data/repository/SessionRepositoryImpl.dart';
+import 'package:auth_wall/di/locator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../domain/usecase/LogInUserUsecase.dart';
 
 class LoginCubit extends Cubit<LoginPageState> {
 
-  final LoginUserUsecase _loginUserUsecase = LoginUserUsecase(SessionRepositoryImpl());
+  final LoginUserUsecase _loginUserUsecase = serviceLocator.get<LoginUserUsecase>();
 
   String _username = "";
   String _password = "";
