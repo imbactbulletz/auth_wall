@@ -12,7 +12,7 @@ class DashboardPage extends StatelessWidget {
   Widget build(BuildContext context) => AutoTabsRouter(
       routes: const [
         HomeRoute(),
-        MessagingRoute(),
+        MessagingRouter(),
         ProfileRoute()
       ],
       builder: (context, child, animation) {

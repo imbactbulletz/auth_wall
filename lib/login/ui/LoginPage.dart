@@ -56,7 +56,9 @@ class LoginPage extends StatelessWidget {
                   ),
                 );
               } else {
-                return PlatformCircularProgressIndicator();
+                return Center(
+                  child: PlatformCircularProgressIndicator(),
+                );
               }
             },
           ),

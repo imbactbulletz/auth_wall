@@ -1,8 +1,9 @@
 import 'package:auth_wall/dashboard/DashboardPage.dart';
+import 'package:auth_wall/guards/AuthGuard.dart';
 import 'package:auth_wall/home/HomePage.dart';
 import 'package:auth_wall/login/ui/LoginPage.dart';
 import 'package:auth_wall/messaging/MessagingPage.dart';
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 
 import '../profile/ProfilePage.dart';
 
@@ -20,8 +21,16 @@ import '../profile/ProfilePage.dart';
               page: HomePage
           ),
           AutoRoute(
+              name: "MessagingRouter",
               path: "messages",
-              page: MessagingPage
+              page: EmptyRouterPage,
+              guards: [AuthGuard],
+              children: [
+                AutoRoute(
+                  initial: true,
+                  page: MessagingPage
+                )
+              ]
           ),
           AutoRoute(
               path: "profile",
